@@ -23,7 +23,7 @@ async function getPool() {
       console.error('ERROR: creating new pool SQL error', err.message);
     }
   }
-  if (!pool.pool || !pool.pool.destroyed) {
+  if (!pool.pool || pool.pool.destroyed) {
     try {
       await pool.connect();
     } catch (err) {

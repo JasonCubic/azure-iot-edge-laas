@@ -12,10 +12,3 @@ COPY src ./src
 USER node
 
 CMD ["node", "app.js"]
-# CMD ["npm", "run", "nodemon"]
-
-# RUN pwd
-# RUN ls -al
-
-# CMD ["./node_modules/.bin/nodemon", "./app.js", "--watch", "src"]
-# CMD ["node", "./node_modules/nodemon/bin/nodemon.js", "./app.js", "--watch", "src"]

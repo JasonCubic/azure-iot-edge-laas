@@ -5,7 +5,6 @@ WORKDIR /app/
 COPY package*.json ./
 
 RUN npm install --production
-# RUN npm install
 
 COPY app.js ./
 COPY src ./src
@@ -14,18 +13,3 @@ COPY src ./src
 USER node
 
 CMD ["node", "app.js"]
-
-# CMD ["npm", "run", "nodemonlegacywatch"]
-
-# RUN pwd
-# RUN ls /test -al
-
-# RUN ls ./node_modules/.bin -al
-
-# CMD ["bash", "./node_modules/.bin/nodemon", "./app.js", "--watch", "src"]
-
-# CMD ["node", "./node_modules/nodemon/bin/nodemon.js", "./app.js", "-L", "--watch", "./src"]
-# CMD ["node", "./node_modules/nodemon/bin/nodemon.js", "./app.js", "--watch", "./src"]
-
-# CMD ["ls", "/test", "-al"]
-
