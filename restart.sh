@@ -1,6 +1,6 @@
 #!/bin/bash
 
-iotedgedev stop
+sudo iotedgedev stop
 
 sudo iotedgedev build
 

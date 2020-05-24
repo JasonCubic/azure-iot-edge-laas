@@ -1,8 +1,18 @@
 {
     "name": "laas",
     "version": "0.0.1",
+    "scripts": {
+        "nodemon": "nodemon ./app.js --watch src",
+        "nodemonlegacywatch": "nodemon ./app.js -L --watch src"
+      },
     "dependencies": {
         "azure-iot-device": "^1.7.0",
-        "azure-iot-device-mqtt": "^1.7.0"
+        "azure-iot-device-mqtt": "^1.7.0",
+        "date-fns": "^2.14.0",
+        "lodash": "^4.17.15",
+        "mssql": "^6.2.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.4"
     }
 }

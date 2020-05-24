@@ -51,6 +51,26 @@
           }
         },
         "modules": {
+          "laas": {
+            "version": "1.0",
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "settings": {
+              "image": "${MODULES.laas}",
+              "createOptions": {}
+            }
+          },
+          "rfidReader": {
+            "version": "1.0",
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "settings": {
+              "image": "${MODULES.rfidReader}",
+              "createOptions": {}
+            }
+          },
           "zebraFxConnectListener": {
             "version": "1.0",
             "type": "docker",
@@ -108,23 +128,6 @@
                 }
               }
             }
-          },
-          "laas": {
-            "version": "1.0",
-            "type": "docker",
-            "status": "running",
-            "restartPolicy": "always",
-            "settings": {
-              "image": "${MODULES.laas}",
-              "createOptions": {
-                "Env": [
-                  "MSSQL_USERNAME=SA",
-                  "MSSQL_PASSWORD=Strong!Passw0rd",
-                  "MSSQL_SERVER=192.168.1.14",
-                  "MSSQL_DATABASE=rtls"
-                ]
-              }
-            }
           }
         }
       }
@@ -133,8 +136,9 @@
       "properties.desired": {
         "schemaVersion": "1.0",
         "routes": {
-          "zebraFxConnectListenerToIoTHub": "FROM /messages/modules/zebraFxConnectListener/outputs/* INTO BrokeredEndpoint(\"/modules/laas/inputs/input1\")",
-          "laasToIoTHub": "FROM /messages/modules/laas/outputs/* INTO $upstream"
+          "rfidReaderToLaasModule": "FROM /messages/modules/rfidReader/outputs/* INTO BrokeredEndpoint(\"/modules/laas/inputs/input1\")",
+          "laasToIoTHub": "FROM /messages/modules/laas/outputs/* INTO $upstream",
+          "zebraFxConnectListenerToIoTHub": "FROM /messages/modules/zebraFxConnectListener/outputs/* INTO $upstream"
         },
         "storeAndForwardConfiguration": {
           "timeToLiveSecs": 7200

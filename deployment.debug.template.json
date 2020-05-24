@@ -116,6 +116,29 @@
                 }
               }
             }
+          },
+          "zebraFxConnectListener": {
+            "version": "1.0",
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "settings": {
+              "image": "${MODULES.zebraFxConnectListener.debug}",
+              "createOptions": {
+                "ExposedPorts": {
+                  "9229/tcp": {}
+                },
+                "HostConfig": {
+                  "PortBindings": {
+                    "9229/tcp": [
+                      {
+                        "HostPort": "9229"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -127,7 +150,8 @@
           "sensorTofiltermodule": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filtermodule/inputs/input1\")",
           "filtermoduleToIoTHub": "FROM /messages/modules/filtermodule/outputs/* INTO $upstream",
           "laasToIoTHub": "FROM /messages/modules/laas/outputs/* INTO $upstream",
-          "rfidReaderToIoTHub": "FROM /messages/modules/rfidReader/outputs/* INTO $upstream"
+          "rfidReaderToIoTHub": "FROM /messages/modules/rfidReader/outputs/* INTO $upstream",
+          "zebraFxConnectListenerToIoTHub": "FROM /messages/modules/zebraFxConnectListener/outputs/* INTO $upstream"
         },
         "storeAndForwardConfiguration": {
           "timeToLiveSecs": 7200
