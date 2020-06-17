@@ -85,7 +85,6 @@ async function handleApi(req, res) {
     console.log('ERRORS: ', errors);
     console.log('postBody: ', postBody);
   }
-
   res.status(200).json({ errors: validationErrors });
 }
 

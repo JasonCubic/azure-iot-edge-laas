@@ -124,8 +124,7 @@
                 "Env": [
                   "MSSQL_USERNAME=SA",
                   "MSSQL_PASSWORD=Strong!Passw0rd",
-                  "MSSQL_SERVER=host.docker.internal",
-                  "MSSQL_PORT=1433",
+                  "MSSQL_SERVER=192.168.1.14",
                   "MSSQL_DATABASE=rtls"
                 ]
               }
@@ -138,15 +137,7 @@
             "restartPolicy": "always",
             "settings": {
               "image": "${MODULES.locationHistory}",
-              "createOptions": {
-                "Env": [
-                  "MSSQL_USERNAME=SA",
-                  "MSSQL_PASSWORD=Strong!Passw0rd",
-                  "MSSQL_SERVER=host.docker.internal",
-                  "MSSQL_PORT=1433",
-                  "MSSQL_DATABASE=location_history"
-                ]
-              }
+              "createOptions": {}
             }
           }
         }
@@ -158,7 +149,7 @@
         "routes": {
           "zebraFxConnectListenerToIoTHub": "FROM /messages/modules/zebraFxConnectListener/outputs/* INTO BrokeredEndpoint(\"/modules/laas/inputs/input1\")",
           "laasToIoTHub": "FROM /messages/modules/laas/outputs/* INTO $upstream",
-          "laasToLocationHistory": "FROM /messages/modules/laas/outputs/* INTO BrokeredEndpoint(\"/modules/locationHistory/inputs/input1\")"
+          "locationHistoryToIoTHub": "FROM /messages/modules/locationHistory/outputs/* INTO $upstream"
         },
         "storeAndForwardConfiguration": {
           "timeToLiveSecs": 7200

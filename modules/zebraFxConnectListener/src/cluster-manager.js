@@ -9,10 +9,6 @@ const webserverWorker = require('./web-server-worker.js');
     for (let i = 0; i < numCPUs; i += 1) {
       cluster.fork();
     }
-
-    // os.cpus().forEach(() => {
-    //   cluster.fork();
-    // });
     cluster.on('exit', (worker, code /* , signal */) => {
       console.log(`worker ${worker.process.pid} died`);
       if (code === 126) {

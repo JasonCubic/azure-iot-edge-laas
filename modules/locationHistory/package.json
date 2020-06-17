@@ -1,9 +1,15 @@
 {
-    "name": "laas",
+    "name": "locationhistory",
     "version": "0.0.1",
+    "description": "Azure IoT Edge Node.js module sample project",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Azure/generator-azure-iot-edge-module"
+    },
+    "license": "MIT",
     "dependencies": {
-        "azure-iot-device": "^1.7.0",
-        "azure-iot-device-mqtt": "^1.7.0",
+        "azure-iot-device": "^1.11.0",
+        "azure-iot-device-mqtt": "^1.11.0",
         "date-fns": "^2.14.0",
         "lodash": "^4.17.15",
         "mssql": "^6.2.0"
