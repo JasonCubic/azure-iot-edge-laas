@@ -5,7 +5,7 @@
         "azure-iot-device": "^1.7.0",
         "azure-iot-device-mqtt": "^1.7.0",
         "date-fns": "^2.14.0",
-        "lodash": "^4.17.15",
+        "lodash": "^4.17.19",
         "mssql": "^6.2.0"
     },
     "devDependencies": {
